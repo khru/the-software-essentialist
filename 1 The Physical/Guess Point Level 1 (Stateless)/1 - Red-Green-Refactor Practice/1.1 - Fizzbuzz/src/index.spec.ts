@@ -42,5 +42,9 @@ describe("Given a number the fizzbuzz algorithm", () => {
         it('given a 10 should return a Buzz', () => {
             expect(fizzbuzz(10)).toBe("Buzz");
         });
+
+        it('given a 20 should return a Buzz', () => {
+            expect(fizzbuzz(20)).toBe("Buzz");
+        });
     });
 });
