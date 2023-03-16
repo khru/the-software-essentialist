@@ -41,4 +41,10 @@ describe("Given a number the fizzbuzz algorithm", () => {
             expect(fizzbuzz(inputNumber)).toBe("Buzz");
         });
     });
+
+    describe("should return FizzBuzz when they are multiples of five", () => {
+        it('given a 15 should return a FizzBuzz', () => {
+            expect(fizzbuzz(15)).toBe("FizzBuzz");
+        });
+    });
 });
