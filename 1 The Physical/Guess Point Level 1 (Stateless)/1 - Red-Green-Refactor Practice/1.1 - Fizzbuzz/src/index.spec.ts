@@ -1,13 +1,5 @@
 function fizzbuzz(number: number): string {
-    if (number === 45) {
-        return "FizzBuzz";
-    }
-
-    if (number === 30) {
-        return "FizzBuzz";
-    }
-
-    if (number === 15) {
+    if (number % 15 === 0) {
         return "FizzBuzz";
     }
 
