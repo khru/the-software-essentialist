@@ -1,6 +1,12 @@
-import { fizzbuzz } from './fizzbuzz';
+import { FizzBuzz } from './fizzbuzz';
 
 describe("Given a number the fizzbuzz algorithm", () => {
+    let fizzBuzz: FizzBuzz;
+
+    beforeEach(() => {
+        fizzBuzz = new FizzBuzz();
+    });
+
 
     describe("should return the same numbers when they are not multiples of three nor five", () => {
         it.each([
@@ -8,7 +14,7 @@ describe("Given a number the fizzbuzz algorithm", () => {
             [2, "2"],
             [4, "4"],
         ])('given a %s should return a %s', (inputNumber: number, expectedOutput: string) => {
-            expect(fizzbuzz(inputNumber)).toBe(expectedOutput);
+            expect(fizzBuzz.convert(inputNumber)).toBe(expectedOutput);
         });
     });
 
@@ -18,7 +24,7 @@ describe("Given a number the fizzbuzz algorithm", () => {
             [6],
             [9],
         ])('given a %s should return a Fizz', (inputNumber: number) => {
-            expect(fizzbuzz(inputNumber)).toBe("Fizz");
+            expect(fizzBuzz.convert(inputNumber)).toBe("Fizz");
         });
     });
 
@@ -28,7 +34,7 @@ describe("Given a number the fizzbuzz algorithm", () => {
             [10],
             [20],
         ])('given a %s should return a Buzz', (inputNumber: number) => {
-            expect(fizzbuzz(inputNumber)).toBe("Buzz");
+            expect(fizzBuzz.convert(inputNumber)).toBe("Buzz");
         });
     });
 
@@ -38,7 +44,7 @@ describe("Given a number the fizzbuzz algorithm", () => {
             [30],
             [45],
         ])('given a %s should return a FizzBuzz', (inputNumber: number) => {
-            expect(fizzbuzz(inputNumber)).toBe("FizzBuzz");
+            expect(fizzBuzz.convert(inputNumber)).toBe("FizzBuzz");
         });
     });
 });
