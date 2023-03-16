@@ -50,5 +50,9 @@ describe("Given a number the fizzbuzz algorithm", () => {
         it('given a 15 should return a FizzBuzz', () => {
             expect(fizzbuzz(15)).toBe("FizzBuzz");
         });
+
+        it('given a 30 should return a FizzBuzz', () => {
+            expect(fizzbuzz(30)).toBe("FizzBuzz");
+        });
     });
 });
