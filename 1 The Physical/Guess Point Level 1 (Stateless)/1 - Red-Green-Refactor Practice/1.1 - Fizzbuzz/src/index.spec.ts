@@ -1,11 +1,5 @@
 function fizzbuzz(number: number): string {
-    if (number === 4) {
-        return "4";
-    }
-    if (number === 2) {
-        return "2";
-    }
-    return "1";
+    return String(number);
 }
 
 describe("fizzbuzz algorithm", () => {
