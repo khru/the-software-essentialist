@@ -1,4 +1,8 @@
 function fizzbuzz(number: number): string {
+    if (number === 20) {
+        return "Buzz";
+    }
+
     if (number === 10) {
         return "Buzz";
     }
@@ -6,6 +10,7 @@ function fizzbuzz(number: number): string {
     if (number === 5) {
         return "Buzz";
     }
+
     if (number % 3 === 0) {
         return "Fizz";
     }
