@@ -10,4 +10,8 @@ describe("fizzbuzz algorithm", () => {
     ])('given a %s should return a %s', (inputNumber: number, expectedOutput: string) => {
         expect(fizzbuzz(inputNumber)).toBe(expectedOutput);
     });
+
+    it('given a 3 should return a Fizz', () => {
+        expect(fizzbuzz(3)).toBe("Fizz");
+    });
 });
