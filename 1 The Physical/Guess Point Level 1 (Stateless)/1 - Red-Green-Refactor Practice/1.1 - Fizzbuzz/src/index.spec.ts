@@ -40,16 +40,12 @@ describe("Given a number the fizzbuzz algorithm", () => {
     });
 
     describe("should return Buzz when they are multiples of five", () => {
-        it('given a 5 should return a Buzz', () => {
-            expect(fizzbuzz(5)).toBe("Buzz");
-        });
-
-        it('given a 10 should return a Buzz', () => {
-            expect(fizzbuzz(10)).toBe("Buzz");
-        });
-
-        it('given a 20 should return a Buzz', () => {
-            expect(fizzbuzz(20)).toBe("Buzz");
+        it.each([
+            [5],
+            [10],
+            [20],
+        ])('given a %s should return a Buzz', (inputNumber: number) => {
+            expect(fizzbuzz(inputNumber)).toBe("Buzz");
         });
     });
 });
