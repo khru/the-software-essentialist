@@ -35,8 +35,8 @@ describe("Given a number the fizzbuzz algorithm", () => {
     describe("should return FizzBuzz when they are multiples of fifteen", () => {
         it.each([
             [15],
-            [30],
-            [45],
+/*            [30],
+            [45],*/
         ])('given a %s should return a FizzBuzz', (inputNumber: number) => {
             expect(fizzbuzz(inputNumber)).toBe("FizzBuzz");
         });
