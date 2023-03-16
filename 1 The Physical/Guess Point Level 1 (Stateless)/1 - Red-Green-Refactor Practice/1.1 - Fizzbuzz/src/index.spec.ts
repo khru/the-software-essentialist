@@ -1,4 +1,8 @@
 function fizzbuzz(number: number): string {
+    if (number === 10) {
+        return "Buzz";
+    }
+
     if (number === 5) {
         return "Buzz";
     }
