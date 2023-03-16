@@ -1,26 +1,21 @@
-function isMultipleOfThreeAndFive(number: number) {
-    return number % 15 === 0;
+function isMultipleOf(number: number, multiple: number) {
+    return number % multiple == 0;
 }
 
-function isMultipleOfThree(number: number) {
-    return number % 3 === 0;
-}
+type NumberedKeyArray = { [n: number]: string };
 
-function isMultipleOfFive(number: number) {
-    return number % 5 == 0;
-}
 
 export function fizzbuzz(number: number): string {
-    if (isMultipleOfThreeAndFive(number)) {
-        return "FizzBuzz";
-    }
-
-    if (isMultipleOfThree(number)) {
-        return "Fizz";
-    }
-
-    if (isMultipleOfFive(number)) {
-        return "Buzz";
+    const fizzBuzzLogic: NumberedKeyArray = {
+        15: "FizzBuzz",
+        5: "Buzz",
+        3: "Fizz"
+    };
+    
+    for (const [multiple, fizzBuzzOutput] of Object.entries(fizzBuzzLogic).reverse()) {
+        if (isMultipleOf(number, +multiple)) {
+            return fizzBuzzOutput;
+        }
     }
 
     return String(number);
