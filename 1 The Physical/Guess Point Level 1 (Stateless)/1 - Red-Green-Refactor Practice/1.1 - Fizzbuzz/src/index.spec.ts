@@ -13,4 +13,8 @@ describe("fizzbuzz algorithm", () => {
     it('given a 2 should return a 2', () => {
         expect(fizzbuzz(2)).toBe("2");
     })
+
+    it('given a 4 should return a 4', () => {
+        expect(fizzbuzz(4)).toBe("4");
+    })
 });
