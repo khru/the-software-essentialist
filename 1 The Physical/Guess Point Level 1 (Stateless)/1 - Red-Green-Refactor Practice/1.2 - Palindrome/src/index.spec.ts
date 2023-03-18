@@ -17,6 +17,7 @@ describe('palindrome checker', () => {
         ['Wow'],
         ['Wow'],
         ['Was It A Rat I Saw'],
+        ['Never Odd or Even'],
     ])('should return true when call with {%s} palindrome',(palindrome: string) => {
         expect(palindromeChecker(palindrome)).toBeTruthy();
     });
