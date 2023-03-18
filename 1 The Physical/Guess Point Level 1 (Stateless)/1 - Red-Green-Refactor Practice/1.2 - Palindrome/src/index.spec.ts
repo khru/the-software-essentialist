@@ -1,6 +1,6 @@
 function palindromeChecker(word: string): boolean {
     if (word === 'non') {
-        return true;
+        return word === word.split('').reverse().join('');
     }
 
     if (word === 'mom') {
