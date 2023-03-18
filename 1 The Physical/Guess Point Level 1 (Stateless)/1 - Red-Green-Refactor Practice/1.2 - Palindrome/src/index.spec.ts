@@ -1,5 +1,5 @@
 function palindromeChecker(word: string): boolean {
-    return word === word.split('').reverse().join('');
+    return word.toLowerCase() === word.toLowerCase().split('').reverse().join('');
 }
 
 describe('palindrome checker', () => {
@@ -13,7 +13,8 @@ describe('palindrome checker', () => {
     it.each([
         ['non'],
         ['mom'],
-        ['wow']
+        ['wow'],
+        ['Wow'],
     ])('should return true when call with {%s} palindrome',(palindrome: string) => {
         expect(palindromeChecker(palindrome)).toBeTruthy();
     });
