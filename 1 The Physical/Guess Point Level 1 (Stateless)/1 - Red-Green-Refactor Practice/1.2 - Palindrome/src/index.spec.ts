@@ -1,17 +1,5 @@
 function palindromeChecker(word: string): boolean {
-    if (word === 'non') {
-        return word === word.split('').reverse().join('');
-    }
-
-    if (word === 'mom') {
-        return true;
-    }
-
-    if (word === 'wow') {
-        return true;
-    }
-
-    return false;
+    return word === word.split('').reverse().join('');
 }
 
 describe('palindrome checker', () => {
@@ -19,15 +7,11 @@ describe('palindrome checker', () => {
         expect(palindromeChecker('A totally random example')).toBeFalsy();
     });
 
-    it('should return true when call with {non} palindrome',  () => {
-        expect(palindromeChecker('non')).toBeTruthy();
-    });
-
-    it('should return true when call with {mom} palindrome',  () => {
-        expect(palindromeChecker('mom')).toBeTruthy();
-    });
-
-    it('should return true when call with {wow} palindrome',  () => {
-        expect(palindromeChecker('wow')).toBeTruthy();
+    it.each([
+        ['non'],
+        ['mom'],
+        ['wow']
+    ])('should return true when call with {%s} palindrome',(palindrome: string) => {
+        expect(palindromeChecker(palindrome)).toBeTruthy();
     });
 })
