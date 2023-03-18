@@ -1,7 +1,9 @@
 function palindromeChecker(word: string): boolean {
-    return word.toLowerCase().replace(/ /g, '') === word.toLowerCase().split('').reverse().join('').replace(/ /g, '');
+    return cleanWord(word) === cleanWord(word).split('').reverse().join('');
 }
-
+function cleanWord(word: string): string {
+    return word.toLowerCase().replace(/ /g, '')
+}
 describe('palindrome checker', () => {
     it.each([
         ['A totally random example'],
