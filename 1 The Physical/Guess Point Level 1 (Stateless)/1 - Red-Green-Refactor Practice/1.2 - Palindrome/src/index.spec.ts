@@ -7,6 +7,10 @@ function palindromeChecker(word: string): boolean {
         return true;
     }
 
+    if (word === 'wow') {
+        return true;
+    }
+
     return false;
 }
 
@@ -21,5 +25,9 @@ describe('palindrome checker', () => {
 
     it('should return true when call with {mom} palindrome',  () => {
         expect(palindromeChecker('mom')).toBeTruthy();
+    });
+
+    it('should return true when call with {wow} palindrome',  () => {
+        expect(palindromeChecker('wow')).toBeTruthy();
     });
 })
