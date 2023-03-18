@@ -3,8 +3,11 @@ function palindromeChecker(word: string): boolean {
 }
 
 describe('palindrome checker', () => {
-    it('should return false when call with a non palindrome',  () => {
-        expect(palindromeChecker('A totally random example')).toBeFalsy();
+    it.each([
+        ['A totally random example'],
+        ['123456'],
+    ])('should return true when call with {%s} palindrome',(nonPalindrome: string) => {
+        expect(palindromeChecker(nonPalindrome)).toBeFalsy();
     });
 
     it.each([
