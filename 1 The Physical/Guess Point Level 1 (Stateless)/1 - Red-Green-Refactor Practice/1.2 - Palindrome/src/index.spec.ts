@@ -2,6 +2,11 @@ function palindromeChecker(word: string): boolean {
     if (word === 'non') {
         return true;
     }
+
+    if (word === 'mom') {
+        return true;
+    }
+
     return false;
 }
 
@@ -12,5 +17,9 @@ describe('palindrome checker', () => {
 
     it('should return true when call with {non} palindrome',  () => {
         expect(palindromeChecker('non')).toBeTruthy();
+    });
+
+    it('should return true when call with {mom} palindrome',  () => {
+        expect(palindromeChecker('mom')).toBeTruthy();
     });
 })
