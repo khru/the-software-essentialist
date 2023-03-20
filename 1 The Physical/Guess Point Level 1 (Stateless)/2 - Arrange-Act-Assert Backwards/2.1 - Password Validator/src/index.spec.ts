@@ -7,15 +7,7 @@ function hasUppercase(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password === 'A1fe') {
-        return { status: false, errors: ['TOO_SHORT']};
-    }
-
-    if (password === 'B2fe') {
-        return { status: false, errors: ['TOO_SHORT']};
-    }
-
-    if (password === 'C3fe') {
+    if (password.length < 5) {
         return { status: false, errors: ['TOO_SHORT']};
     }
 
@@ -48,35 +40,12 @@ describe('password validator', () => {
         expect(result.errors).toEqual(['NO_UPPER'])
     });
 
-    it('given a short password {A1fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
-        // Given
-        const A_TOO_SHORT_PASSWORD = 'A1fe';
-        // When
-        const result = passwordValidator(A_TOO_SHORT_PASSWORD);
-
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['TOO_SHORT'])
-    });
-
-    it('given a short password {B2fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
-        // Given
-        const A_TOO_SHORT_PASSWORD = 'B2fe';
-        // When
-        const result = passwordValidator(A_TOO_SHORT_PASSWORD);
-
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['TOO_SHORT'])
-    });
-
-    it('given a short password {C3fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
-        // Given
-        const A_TOO_SHORT_PASSWORD = 'C3fe';
-        // When
-        const result = passwordValidator(A_TOO_SHORT_PASSWORD);
-
-        // Then
+    it.each([
+        ['A1fe'],
+        ['B2fe'],
+        ['C3fe'],
+    ])('given a short password {%s} when call the password validator then it should return an invalid response with TOO_SHORT error', (invalidPassword: string) => {
+        const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['TOO_SHORT'])
     });
