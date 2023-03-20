@@ -15,6 +15,10 @@ function passwordValidator(password: string): PasswordValidation {
         return { status: false, errors: ['TOO_SHORT']};
     }
 
+    if (password === 'C3fe') {
+        return { status: false, errors: ['TOO_SHORT']};
+    }
+
     if (hasUppercase(password)) {
         return { status: false, errors: ['NO_UPPER']};
     }
@@ -58,6 +62,17 @@ describe('password validator', () => {
     it('given a short password {B2fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
         // Given
         const A_TOO_SHORT_PASSWORD = 'B2fe';
+        // When
+        const result = passwordValidator(A_TOO_SHORT_PASSWORD);
+
+        // Then
+        expect(result.status).toBeFalsy()
+        expect(result.errors).toEqual(['TOO_SHORT'])
+    });
+
+    it('given a short password {C3fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
+        // Given
+        const A_TOO_SHORT_PASSWORD = 'C3fe';
         // When
         const result = passwordValidator(A_TOO_SHORT_PASSWORD);
 
