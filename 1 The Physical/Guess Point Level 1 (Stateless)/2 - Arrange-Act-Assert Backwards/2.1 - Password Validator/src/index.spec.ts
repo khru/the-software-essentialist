@@ -1,11 +1,16 @@
 type PasswordValidation = { status: boolean, errors: Array<string> };
 
+function hasUppercase(password: string) {
+    const uppercasePatternRegex: RegExp = /.*[A-Z].*/g;
+    return password.match(uppercasePatternRegex) === null;
+}
+
 function passwordValidator(password: string): PasswordValidation {
-    const uppercasePatternRegex = /.*[A-Z].*/g;
-    if (password.match(uppercasePatternRegex) === null) {
+
+    if (hasUppercase(password)) {
         return { status: false, errors: ['NO_UPPER']};
     }
-    
+
     return { status: false, errors: ['NO_DIGITS']};
 }
 
