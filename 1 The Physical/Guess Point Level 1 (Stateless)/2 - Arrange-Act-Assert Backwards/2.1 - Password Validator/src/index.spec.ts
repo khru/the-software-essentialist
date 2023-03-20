@@ -10,9 +10,14 @@ function hasMinLength(password: string) {
     return password.length < MIN_LENGTH_FOR_A_PASSWORD;
 }
 
+function hasMaxLength(password: string) {
+    const MAX_LENGTH_FOR_A_PASSWORD = 15;
+    return password.length > MAX_LENGTH_FOR_A_PASSWORD;
+}
+
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password.length > 15) {
+    if (hasMaxLength(password)) {
         return { status: false, errors: ['TOO_LONG']};
     }
 
