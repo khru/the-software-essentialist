@@ -8,6 +8,10 @@ function passwordValidator(password: string): PasswordValidation {
     if (password === '2 non valid password') {
         return { status: false, errors: ['NO_UPPER']};
     }
+
+    if (password === '3 non valid password') {
+        return { status: false, errors: ['NO_UPPER']};
+    }
     return { status: false, errors: ['NO_DIGITS']};
 }
 
@@ -37,6 +41,18 @@ describe('password validator', () => {
     it('given the password {2 non valid password} when call the password validator then it should return an invalid response with NO_UPPER error', () => {
         // Given
         const A_PASSWORD_WITHOUT_UPPER = '2 non valid password';
+        // When
+        const result = passwordValidator(A_PASSWORD_WITHOUT_UPPER);
+
+        // Then
+        expect(result.status).toBeFalsy()
+        expect(result.errors).toEqual(['NO_UPPER'])
+    });
+
+    it('given the password {3 non valid password} when call the password validator then it should return an invalid response with NO_UPPER error', () => {
+        // Given
+        const A_PASSWORD_WITHOUT_UPPER = '3 non valid password';
+
         // When
         const result = passwordValidator(A_PASSWORD_WITHOUT_UPPER);
 
