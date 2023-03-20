@@ -15,10 +15,23 @@ To set up the project, run the following command:
 npm run install
 ```
 
+```bash
+yarn install
+```
+
 ## To run the tests in development mode
 
 To run the tests and have them reload when you save, run the following command:
 
 ```bash
 npm run test:dev
+```
+```bash
+yarn run test:dev
+```
+
+## Adding .nvmrc to use NVM
+
+```bash
+echo "16.17.1" > .nvmrc
 ```
