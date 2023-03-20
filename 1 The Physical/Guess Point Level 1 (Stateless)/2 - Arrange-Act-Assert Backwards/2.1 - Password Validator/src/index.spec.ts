@@ -12,15 +12,7 @@ function hasMinLength(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password === 'More than 15 cha') {
-        return { status: false, errors: ['TOO_LONG']};
-    }
-
-    if (password === 'More than 16 cha') {
-        return { status: false, errors: ['TOO_LONG']};
-    }
-
-    if (password === 'More than 17 cha') {
+    if (password.length > 15) {
         return { status: false, errors: ['TOO_LONG']};
     }
 
@@ -67,38 +59,12 @@ describe('password validator', () => {
         expect(result.errors).toEqual(['TOO_SHORT'])
     });
 
-    it('given a long password {More than 15 cha} when call the password validator then it should return an invalid response with TOO_LONG error', () => {
-        // Given
-        const A_PASSWORD_WITH_OVER_THE_MAX_LENGTH = 'More than 15 cha';
-
-        // When
-        const result = passwordValidator(A_PASSWORD_WITH_OVER_THE_MAX_LENGTH);
-
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['TOO_LONG'])
-    });
-
-    it('given a long password {More than 16 cha} when call the password validator then it should return an invalid response with TOO_LONG error', () => {
-        // Given
-        const A_PASSWORD_WITH_OVER_THE_MAX_LENGTH = 'More than 16 cha';
-
-        // When
-        const result = passwordValidator(A_PASSWORD_WITH_OVER_THE_MAX_LENGTH);
-
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['TOO_LONG'])
-    });
-
-    it('given a long password {More than 17 cha} when call the password validator then it should return an invalid response with TOO_LONG error', () => {
-        // Given
-        const A_PASSWORD_WITH_OVER_THE_MAX_LENGTH = 'More than 17 cha';
-
-        // When
-        const result = passwordValidator(A_PASSWORD_WITH_OVER_THE_MAX_LENGTH);
-
-        // Then
+    it.each([
+        ['More than 15 cha'],
+        ['More than 16 cha'],
+        ['More than 17 cha'],
+    ])('given a long password {%s} when call the password validator then it should return an invalid response with TOO_LONG error', (invalidPassword: string) => {
+        const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['TOO_LONG'])
     });
