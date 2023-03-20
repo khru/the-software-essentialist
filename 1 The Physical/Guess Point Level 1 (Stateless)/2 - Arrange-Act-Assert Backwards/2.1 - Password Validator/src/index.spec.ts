@@ -7,6 +7,10 @@ function hasUppercase(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
+    if (password === 'A1fe') {
+        return { status: false, errors: ['TOO_SHORT']};
+    }
+
     if (hasUppercase(password)) {
         return { status: false, errors: ['NO_UPPER']};
     }
@@ -35,5 +39,17 @@ describe('password validator', () => {
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['NO_UPPER'])
     });
+
+    it('given a short password {A1fe} when call the password validator then it should return an invalid response with TOO_SHORT error', () => {
+        // Given
+        const A_TOO_SHORT_PASSWORD = 'A1fe';
+        // When
+        const result = passwordValidator(A_TOO_SHORT_PASSWORD);
+
+        // Then
+        expect(result.status).toBeFalsy()
+        expect(result.errors).toEqual(['TOO_SHORT'])
+    });
+
 })
 
