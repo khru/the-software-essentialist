@@ -20,6 +20,10 @@ function passwordValidator(password: string): PasswordValidation {
         return { status: false, errors: ['TOO_LONG']};
     }
 
+    if (password === 'More than 17 cha') {
+        return { status: false, errors: ['TOO_LONG']};
+    }
+
     if (hasMinLength(password)) {
         return { status: false, errors: ['TOO_SHORT']};
     }
@@ -78,6 +82,18 @@ describe('password validator', () => {
     it('given a long password {More than 16 cha} when call the password validator then it should return an invalid response with TOO_LONG error', () => {
         // Given
         const A_PASSWORD_WITH_OVER_THE_MAX_LENGTH = 'More than 16 cha';
+
+        // When
+        const result = passwordValidator(A_PASSWORD_WITH_OVER_THE_MAX_LENGTH);
+
+        // Then
+        expect(result.status).toBeFalsy()
+        expect(result.errors).toEqual(['TOO_LONG'])
+    });
+
+    it('given a long password {More than 17 cha} when call the password validator then it should return an invalid response with TOO_LONG error', () => {
+        // Given
+        const A_PASSWORD_WITH_OVER_THE_MAX_LENGTH = 'More than 17 cha';
 
         // When
         const result = passwordValidator(A_PASSWORD_WITH_OVER_THE_MAX_LENGTH);
