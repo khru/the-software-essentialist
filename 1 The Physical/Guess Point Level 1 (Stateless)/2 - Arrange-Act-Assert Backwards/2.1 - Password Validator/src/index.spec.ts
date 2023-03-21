@@ -15,9 +15,14 @@ function hasMaxLength(password: string) {
     return password.length > MAX_LENGTH_FOR_A_PASSWORD;
 }
 
+function hasAtLeastANumber(password: string) {
+    const atLeastANumberPatternRegex: RegExp = /.*[0-9]+.*/g;
+    return password.match(atLeastANumberPatternRegex) === null;
+}
+
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password.match(/.*[0-9]+.*/g) === null) {
+    if (hasAtLeastANumber(password)) {
         return { status: false, errors: ['NO_DIGITS']};
     }
 
