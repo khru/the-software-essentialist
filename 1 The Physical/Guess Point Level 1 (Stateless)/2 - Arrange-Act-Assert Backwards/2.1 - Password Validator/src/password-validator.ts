@@ -1,4 +1,4 @@
-type PasswordValidation = { status: boolean, errors: Array<Errors> };
+export type PasswordValidation = { status: boolean, errors: Array<Errors> };
 
 export enum Errors {
     NO_DIGITS = 'NO_DIGITS',

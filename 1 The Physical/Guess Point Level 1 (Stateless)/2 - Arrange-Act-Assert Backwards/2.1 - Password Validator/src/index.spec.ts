@@ -61,23 +61,16 @@ describe('password validator', () => {
         expect(result.errors).toEqual([])
     });
 
-    it('given a short and without number password {One} should return an invalid response with TOO_SHORT and NO_DIGITS error', () => {
-        const result = passwordValidator.validate('One');
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(expect.arrayContaining([Errors.TOO_SHORT, Errors.NO_DIGITS]));
-    })
 
-    it('given a short and without number password {Two} should return an invalid response with TOO_SHORT and NO_DIGITS error', () => {
-        const result = passwordValidator.validate('Two');
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(expect.arrayContaining([Errors.TOO_SHORT, Errors.NO_DIGITS]));
-    })
-
-    it('given a short and without number password {Too} should return an invalid response with TOO_SHORT and NO_DIGITS error', () => {
-        const result = passwordValidator.validate('Too');
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(expect.arrayContaining([Errors.TOO_SHORT, Errors.NO_DIGITS]));
-    })
+    it.each([
+        ['One', [Errors.TOO_SHORT, Errors.NO_DIGITS]],
+        ['Two', [Errors.TOO_SHORT, Errors.NO_DIGITS]],
+        ['Too', [Errors.TOO_SHORT, Errors.NO_DIGITS]],
+    ])('given an invalid password for more the one reason {%s} when call the password validator then it should return an invalid response with multiple error', (invalidPassword: string, violations: Errors[]) => {
+        const result = passwordValidator.validate(invalidPassword);
+        expect(result.status).toBeFalsy();
+        expect(result.errors).toEqual(expect.arrayContaining(violations));
+    });
 
 })
 
