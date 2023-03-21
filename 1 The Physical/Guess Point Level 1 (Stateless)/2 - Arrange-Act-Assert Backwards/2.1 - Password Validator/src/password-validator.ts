@@ -15,11 +15,15 @@ export class PasswordValidator {
             return { status: false, errors: ['TOO_SHORT']};
         }
 
-        if (hasUppercase(password)) {
+        if (this.hasUppercase(password)) {
             return { status: false, errors: ['NO_UPPER']};
         }
 
         return { status: true, errors: []};
+    }
+    private hasUppercase(password: string): boolean {
+        const uppercasePatternRegex: RegExp = /.*[A-Z].*/g;
+        return password.match(uppercasePatternRegex) === null;
     }
 }
 
