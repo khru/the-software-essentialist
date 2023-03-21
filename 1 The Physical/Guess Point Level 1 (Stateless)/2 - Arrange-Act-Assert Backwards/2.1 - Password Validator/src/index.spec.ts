@@ -68,6 +68,7 @@ describe('password validator', () => {
         ['Too', [Errors.TOO_SHORT, Errors.NO_DIGITS]],
         ['too', [Errors.TOO_SHORT, Errors.NO_DIGITS, Errors.NO_UPPER]],
         ['two', [Errors.TOO_SHORT, Errors.NO_DIGITS, Errors.NO_UPPER]],
+        ['one', [Errors.TOO_SHORT, Errors.NO_DIGITS, Errors.NO_UPPER]],
     ])('given an invalid password for more the one reason {%s} when call the password validator then it should return an invalid response with multiple error', (invalidPassword: string, violations: Errors[]) => {
         const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy();
