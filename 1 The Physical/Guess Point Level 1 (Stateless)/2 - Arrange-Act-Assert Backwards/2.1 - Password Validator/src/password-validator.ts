@@ -13,18 +13,6 @@ export class PasswordValidator {
             errors: []
         }
 
-        if (password === 'too') {
-            return { status: false, errors: [Errors.NO_UPPER, Errors.NO_DIGITS, Errors.TOO_SHORT]};
-        }
-
-        if (password === 'two') {
-            return { status: false, errors: [Errors.NO_UPPER, Errors.NO_DIGITS, Errors.TOO_SHORT]};
-        }
-
-        if (password === 'one') {
-            return { status: false, errors: [Errors.NO_UPPER, Errors.NO_DIGITS, Errors.TOO_SHORT]};
-        }
-
         if (this.hasAtLeastANumber(password)) {
             passwordValidation.status = false;
             passwordValidation.errors.push(Errors.NO_DIGITS)
@@ -40,7 +28,8 @@ export class PasswordValidator {
         }
 
         if (this.hasUppercase(password)) {
-            return { status: false, errors: [Errors.NO_UPPER]};
+            passwordValidation.status = false;
+            passwordValidation.errors.push(Errors.NO_UPPER)
         }
 
         return passwordValidation;
