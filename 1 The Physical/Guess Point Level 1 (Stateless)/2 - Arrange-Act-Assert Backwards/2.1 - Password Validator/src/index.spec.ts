@@ -42,8 +42,8 @@ describe('password validator', () => {
 
     it.each([
         ['More than 15 cha'],
-        ['More than 16 cha'],
-        ['More than 17 cha'],
+        ['More than 16 char'],
+        ['More than 17 chara'],
     ])('given a long password {%s} when call the password validator then it should return an invalid response with TOO_LONG error', (invalidPassword: string) => {
         const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy();
