@@ -20,6 +20,9 @@ function passwordValidator(password: string): PasswordValidation {
     if (password === 'A perfect p4ass') {
         return { status: true, errors: []};
     }
+    if (password === 'A p3rfect pass') {
+        return { status: true, errors: []};
+    }
     if (hasMaxLength(password)) {
         return { status: false, errors: ['TOO_LONG']};
     }
@@ -80,6 +83,17 @@ describe('password validator', () => {
     it('given a valid password {A perfect p4ass} when call the password validator then it should return a valid response with no error', () => {
         // Given
         const A_VALID_PASSWORD = 'A perfect p4ass';
+        // When
+        const result = passwordValidator(A_VALID_PASSWORD);
+
+        // Then
+        expect(result.status).toBeTruthy()
+        expect(result.errors).toEqual([])
+    });
+
+    it('given a valid password {A p3rfect pass} when call the password validator then it should return a valid response with no error', () => {
+        // Given
+        const A_VALID_PASSWORD = 'A p3rfect pass';
         // When
         const result = passwordValidator(A_VALID_PASSWORD);
 
