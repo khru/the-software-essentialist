@@ -15,7 +15,7 @@ export class PasswordValidator {
 
         if (this.hasAtLeastANumber(password)) {
             passwordValidation.status = false;
-            passwordValidation.errors.push(Errors.NO_DIGITS)
+            passwordValidation.errors.push(Errors.NO_DIGITS);
         }
 
         if (this.hasMaxLength(password)) {
@@ -30,7 +30,7 @@ export class PasswordValidator {
 
         if (this.hasUppercase(password)) {
             passwordValidation.status = false;
-            passwordValidation.errors.push(Errors.NO_UPPER)
+            passwordValidation.errors.push(Errors.NO_UPPER);
         }
 
         return passwordValidation;
