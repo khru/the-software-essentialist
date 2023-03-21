@@ -79,9 +79,9 @@ describe('password validator', () => {
 
     it('given a valid password {A perfect p4ass} when call the password validator then it should return a valid response with no error', () => {
         // Given
-        const A_PASSWORD_WITHOUT_DIGITS = 'A perfect p4ass';
+        const A_VALID_PASSWORD = 'A perfect p4ass';
         // When
-        const result = passwordValidator(A_PASSWORD_WITHOUT_DIGITS);
+        const result = passwordValidator(A_VALID_PASSWORD);
 
         // Then
         expect(result.status).toBeTruthy()
