@@ -7,7 +7,7 @@ export class PasswordValidator {
             return { status: false, errors: ['NO_DIGITS']};
         }
 
-        if (hasMaxLength(password)) {
+        if (this.hasMaxLength(password)) {
             return { status: false, errors: ['TOO_LONG']};
         }
 
@@ -29,10 +29,10 @@ export class PasswordValidator {
         const MIN_LENGTH_FOR_A_PASSWORD = 5;
         return password.length < MIN_LENGTH_FOR_A_PASSWORD;
     }
-}
-function hasMaxLength(password: string) {
-    const MAX_LENGTH_FOR_A_PASSWORD = 15;
-    return password.length > MAX_LENGTH_FOR_A_PASSWORD;
+    private hasMaxLength(password: string) {
+        const MAX_LENGTH_FOR_A_PASSWORD = 15;
+        return password.length > MAX_LENGTH_FOR_A_PASSWORD;
+    }
 }
 
 function hasAtLeastANumber(password: string) {
