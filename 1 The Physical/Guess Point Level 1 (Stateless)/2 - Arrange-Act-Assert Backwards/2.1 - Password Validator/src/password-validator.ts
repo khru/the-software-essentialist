@@ -1,11 +1,7 @@
+import { Errors } from "./errors";
+
 export type PasswordValidation = { status: boolean, errors: Array<Errors> };
 
-export enum Errors {
-    NO_DIGITS = 'NO_DIGITS',
-    TOO_LONG = 'TOO_LONG',
-    TOO_SHORT = 'TOO_SHORT',
-    NO_UPPER = 'NO_UPPER'
-}
 export class PasswordValidator {
     validate(password: string): PasswordValidation {
         const passwordValidation: PasswordValidation = {

@@ -1,4 +1,5 @@
-import { Errors, PasswordValidator } from "./password-validator";
+import { PasswordValidator } from "./password-validator";
+import { Errors } from "./errors";
 
 describe('password validator', () => {
 
