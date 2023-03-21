@@ -45,35 +45,13 @@ function passwordValidator(password: string): PasswordValidation {
 }
 
 describe('password validator', () => {
-    it('given the password {A non valid} when call the password validator then it should return an invalid response with NO_DIGITS error', () => {
-        // Given
-        const A_PASSWORD_WITHOUT_DIGITS = 'A non valid';
-        // When
-        const result = passwordValidator(A_PASSWORD_WITHOUT_DIGITS);
 
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['NO_DIGITS'])
-    });
-
-    it('given the password {Other non valid} when call the password validator then it should return an invalid response with NO_DIGITS error', () => {
-        // Given
-        const A_PASSWORD_WITHOUT_DIGITS = 'Other non valid';
-        // When
-        const result = passwordValidator(A_PASSWORD_WITHOUT_DIGITS);
-
-        // Then
-        expect(result.status).toBeFalsy()
-        expect(result.errors).toEqual(['NO_DIGITS'])
-    });
-
-    it('given the password {Anothernonvalid} when call the password validator then it should return an invalid response with NO_DIGITS error', () => {
-        // Given
-        const A_PASSWORD_WITHOUT_DIGITS = 'Anothernonvalid';
-        // When
-        const result = passwordValidator(A_PASSWORD_WITHOUT_DIGITS);
-
-        // Then
+    it.each([
+        ['A non valid'],
+        ['Other non valid'],
+        ['Anothernonvalid'],
+    ])('given the password {%s} when call the password validator then it should return an invalid response with NO_DIGITS error', (invalidPassword: string) => {
+        const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['NO_DIGITS'])
     });
