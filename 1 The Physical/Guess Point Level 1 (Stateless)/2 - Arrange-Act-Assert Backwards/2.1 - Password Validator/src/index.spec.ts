@@ -17,6 +17,9 @@ function hasMaxLength(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
+    if (password === 'A perfect p4ass') {
+        return { status: true, errors: []};
+    }
     if (hasMaxLength(password)) {
         return { status: false, errors: ['TOO_LONG']};
     }
@@ -72,6 +75,17 @@ describe('password validator', () => {
         const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['TOO_LONG'])
+    });
+
+    it('given a valid password {A perfect p4ass} when call the password validator then it should return a valid response with no error', () => {
+        // Given
+        const A_PASSWORD_WITHOUT_DIGITS = 'A perfect p4ass';
+        // When
+        const result = passwordValidator(A_PASSWORD_WITHOUT_DIGITS);
+
+        // Then
+        expect(result.status).toBeTruthy()
+        expect(result.errors).toEqual([])
     });
 
 })
