@@ -20,7 +20,7 @@ function passwordValidator(password: string): PasswordValidation {
     if (password === 'A non valid') {
         return { status: false, errors: ['NO_DIGITS']};
     }
-    
+
     if (hasMaxLength(password)) {
         return { status: false, errors: ['TOO_LONG']};
     }
@@ -37,7 +37,7 @@ function passwordValidator(password: string): PasswordValidation {
 }
 
 describe('password validator', () => {
-    it('given the password {A non valid password} when call the password validator then it should return an invalid response with NO_DIGITS error', () => {
+    it('given the password {A non valid} when call the password validator then it should return an invalid response with NO_DIGITS error', () => {
         // Given
         const A_PASSWORD_WITHOUT_DIGITS = 'A non valid';
         // When
@@ -47,6 +47,8 @@ describe('password validator', () => {
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['NO_DIGITS'])
     });
+
+
 
     it.each([
         ['1 non valid'],
