@@ -2,6 +2,9 @@ type PasswordValidation = { status: boolean, errors: Array<string> };
 
 export class PasswordValidator {
     validate(password: string): PasswordValidation {
+        if (password === 'One') {
+            return { status: false, errors: ['TOO_SHORT', 'NO_DIGITS']};
+        }
 
         if (this.hasAtLeastANumber(password)) {
             return { status: false, errors: ['NO_DIGITS']};

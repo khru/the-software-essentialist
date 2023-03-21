@@ -61,5 +61,10 @@ describe('password validator', () => {
         expect(result.errors).toEqual([])
     });
 
+    it('given a short and without number password {One} should return an invalid response with TOO_SHORT and NO_DIGITS error', () => {
+        const result = passwordValidator.validate('One');
+        expect(result.status).toBeFalsy()
+        expect(result.errors).toEqual(expect.arrayContaining(['TOO_SHORT', 'NO_DIGITS']));
+    })
 })
 
