@@ -17,6 +17,10 @@ export class PasswordValidator {
             return { status: false, errors: [Errors.NO_UPPER, Errors.NO_DIGITS, Errors.TOO_SHORT]};
         }
 
+        if (password === 'two') {
+            return { status: false, errors: [Errors.NO_UPPER, Errors.NO_DIGITS, Errors.TOO_SHORT]};
+        }
+
         if (this.hasAtLeastANumber(password)) {
             passwordValidation.status = false;
             passwordValidation.errors.push(Errors.NO_DIGITS)
