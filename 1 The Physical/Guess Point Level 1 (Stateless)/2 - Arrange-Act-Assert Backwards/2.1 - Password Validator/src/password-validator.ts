@@ -3,7 +3,20 @@ type PasswordValidation = { status: boolean, errors: Array<string> };
 export class PasswordValidator {
     validate(password: string): PasswordValidation {
         if (password === 'One') {
-            return { status: false, errors: ['TOO_SHORT', 'NO_DIGITS']};
+            const passwordValidation: PasswordValidation = {
+                status: true,
+                errors: []
+            }
+            if (this.hasMinLength(password)) {
+                passwordValidation.status = false;
+                passwordValidation.errors.push('TOO_SHORT')
+            }
+
+            if (this.hasAtLeastANumber(password)) {
+                passwordValidation.status = false;
+                passwordValidation.errors.push('NO_DIGITS')
+            }
+            return passwordValidation;
         }
 
         if (password === 'Two') {
