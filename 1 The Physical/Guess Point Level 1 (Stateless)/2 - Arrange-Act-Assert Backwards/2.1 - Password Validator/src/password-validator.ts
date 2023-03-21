@@ -1,5 +1,28 @@
 type PasswordValidation = { status: boolean, errors: Array<string> };
 
+export class PasswordValidator {
+    validate(password: string): PasswordValidation {
+
+        if (hasAtLeastANumber(password)) {
+            return { status: false, errors: ['NO_DIGITS']};
+        }
+
+        if (hasMaxLength(password)) {
+            return { status: false, errors: ['TOO_LONG']};
+        }
+
+        if (hasMinLength(password)) {
+            return { status: false, errors: ['TOO_SHORT']};
+        }
+
+        if (hasUppercase(password)) {
+            return { status: false, errors: ['NO_UPPER']};
+        }
+
+        return { status: true, errors: []};
+    }
+}
+
 function hasUppercase(password: string) {
     const uppercasePatternRegex: RegExp = /.*[A-Z].*/g;
     return password.match(uppercasePatternRegex) === null;
@@ -18,25 +41,4 @@ function hasMaxLength(password: string) {
 function hasAtLeastANumber(password: string) {
     const atLeastANumberPatternRegex: RegExp = /.*[0-9]+.*/g;
     return password.match(atLeastANumberPatternRegex) === null;
-}
-
-export function passwordValidator(password: string): PasswordValidation {
-
-    if (hasAtLeastANumber(password)) {
-        return { status: false, errors: ['NO_DIGITS']};
-    }
-
-    if (hasMaxLength(password)) {
-        return { status: false, errors: ['TOO_LONG']};
-    }
-
-    if (hasMinLength(password)) {
-        return { status: false, errors: ['TOO_SHORT']};
-    }
-
-    if (hasUppercase(password)) {
-        return { status: false, errors: ['NO_UPPER']};
-    }
-
-    return { status: true, errors: []};
 }

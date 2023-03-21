@@ -1,14 +1,18 @@
-import {passwordValidator} from "./password-validator";
-
+import { PasswordValidator } from "./password-validator";
 
 describe('password validator', () => {
+
+    let passwordValidator: PasswordValidator;
+    beforeEach(() => {
+        passwordValidator = new PasswordValidator()
+    })
 
     it.each([
         ['A non valid'],
         ['Other non valid'],
         ['Anothernonvalid'],
     ])('given the password {%s} when call the password validator then it should return an invalid response with NO_DIGITS error', (invalidPassword: string) => {
-        const result = passwordValidator(invalidPassword);
+        const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['NO_DIGITS'])
     });
@@ -19,7 +23,7 @@ describe('password validator', () => {
         ['3 non valid'],
         ['32 non valid'],
     ])('given the password {%s} when call the password validator then it should return an invalid response with NO_UPPER error', (invalidPassword: string) => {
-        const result = passwordValidator(invalidPassword);
+        const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['NO_UPPER'])
     });
@@ -30,7 +34,7 @@ describe('password validator', () => {
         ['C3fe'],
         ['C3fE'],
     ])('given a short password {%s} when call the password validator then it should return an invalid response with TOO_SHORT error', (invalidPassword: string) => {
-        const result = passwordValidator(invalidPassword);
+        const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['TOO_SHORT'])
     });
@@ -40,7 +44,7 @@ describe('password validator', () => {
         ['More than 16 cha'],
         ['More than 17 cha'],
     ])('given a long password {%s} when call the password validator then it should return an invalid response with TOO_LONG error', (invalidPassword: string) => {
-        const result = passwordValidator(invalidPassword);
+        const result = passwordValidator.validate(invalidPassword);
         expect(result.status).toBeFalsy()
         expect(result.errors).toEqual(['TOO_LONG'])
     });
@@ -52,7 +56,7 @@ describe('password validator', () => {
         ['A p4ss with 15c'],
         ['P4ssw'],
     ])('given a valid password {%s} when call the password validator then it should return a valid response with no error', (validPasswords: string) => {
-        const result = passwordValidator(validPasswords);
+        const result = passwordValidator.validate(validPasswords);
         expect(result.status).toBeTruthy()
         expect(result.errors).toEqual([])
     });
