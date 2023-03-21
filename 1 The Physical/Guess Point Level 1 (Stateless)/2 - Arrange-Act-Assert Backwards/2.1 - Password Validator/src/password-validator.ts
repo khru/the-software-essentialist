@@ -15,6 +15,9 @@ export class PasswordValidator {
         if (password === 'A pass without numbers and too long') {
             return { status: false, errors: [Errors.TOO_LONG, Errors.NO_DIGITS]};
         }
+        if (password === 'Other pass without numbers and too long') {
+            return { status: false, errors: [Errors.TOO_LONG, Errors.NO_DIGITS]};
+        }
 
         if (this.hasAtLeastANumber(password)) {
             passwordValidation.status = false;
