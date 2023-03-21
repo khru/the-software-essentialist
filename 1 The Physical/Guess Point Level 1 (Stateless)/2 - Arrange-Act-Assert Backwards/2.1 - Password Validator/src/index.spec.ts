@@ -17,17 +17,7 @@ function hasMaxLength(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password === 'A non valid') {
-        if (password.match(/.*[0-9]+.*/g) === null) {
-            return { status: false, errors: ['NO_DIGITS']};
-        }
-    }
-
-    if (password === 'Other non valid') {
-        return { status: false, errors: ['NO_DIGITS']};
-    }
-
-    if (password === 'Anothernonvalid') {
+    if (password.match(/.*[0-9]+.*/g) === null) {
         return { status: false, errors: ['NO_DIGITS']};
     }
 
