@@ -3,7 +3,7 @@ type PasswordValidation = { status: boolean, errors: Array<string> };
 export class PasswordValidator {
     validate(password: string): PasswordValidation {
 
-        if (hasAtLeastANumber(password)) {
+        if (this.hasAtLeastANumber(password)) {
             return { status: false, errors: ['NO_DIGITS']};
         }
 
@@ -29,13 +29,13 @@ export class PasswordValidator {
         const MIN_LENGTH_FOR_A_PASSWORD = 5;
         return password.length < MIN_LENGTH_FOR_A_PASSWORD;
     }
-    private hasMaxLength(password: string) {
+    private hasMaxLength(password: string): boolean {
         const MAX_LENGTH_FOR_A_PASSWORD = 15;
         return password.length > MAX_LENGTH_FOR_A_PASSWORD;
     }
-}
 
-function hasAtLeastANumber(password: string) {
-    const atLeastANumberPatternRegex: RegExp = /.*[0-9]+.*/g;
-    return password.match(atLeastANumberPatternRegex) === null;
+    private hasAtLeastANumber(password: string): boolean {
+        const atLeastANumberPatternRegex: RegExp = /.*[0-9]+.*/g;
+        return password.match(atLeastANumberPatternRegex) === null;
+    }
 }
