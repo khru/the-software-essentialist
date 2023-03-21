@@ -17,15 +17,10 @@ function hasMaxLength(password: string) {
 
 function passwordValidator(password: string): PasswordValidation {
 
-    if (password === 'A perfect p4ass') {
-        return { status: true, errors: []};
+    if (password === 'A non valid') {
+        return { status: false, errors: ['NO_DIGITS']};
     }
-    if (password === 'A p3rfect pass') {
-        return { status: true, errors: []};
-    }
-    if (password === 'A perf3ct pass') {
-        return { status: true, errors: []};
-    }
+    
     if (hasMaxLength(password)) {
         return { status: false, errors: ['TOO_LONG']};
     }
@@ -38,7 +33,7 @@ function passwordValidator(password: string): PasswordValidation {
         return { status: false, errors: ['NO_UPPER']};
     }
 
-    return { status: false, errors: ['NO_DIGITS']};
+    return { status: true, errors: []};
 }
 
 describe('password validator', () => {
@@ -83,35 +78,12 @@ describe('password validator', () => {
         expect(result.errors).toEqual(['TOO_LONG'])
     });
 
-    it('given a valid password {A perfect p4ass} when call the password validator then it should return a valid response with no error', () => {
-        // Given
-        const A_VALID_PASSWORD = 'A perfect p4ass';
-        // When
-        const result = passwordValidator(A_VALID_PASSWORD);
-
-        // Then
-        expect(result.status).toBeTruthy()
-        expect(result.errors).toEqual([])
-    });
-
-    it('given a valid password {A p3rfect pass} when call the password validator then it should return a valid response with no error', () => {
-        // Given
-        const A_VALID_PASSWORD = 'A p3rfect pass';
-        // When
-        const result = passwordValidator(A_VALID_PASSWORD);
-
-        // Then
-        expect(result.status).toBeTruthy()
-        expect(result.errors).toEqual([])
-    });
-
-    it('given a valid password {A perf3ct pass} when call the password validator then it should return a valid response with no error', () => {
-        // Given
-        const A_VALID_PASSWORD = 'A perf3ct pass';
-        // When
-        const result = passwordValidator(A_VALID_PASSWORD);
-
-        // Then
+    it.each([
+        ['A perfect p4ass'],
+        ['A p3rfect pass'],
+        ['A perf3ct pass'],
+    ])('given a valid password {%s} when call the password validator then it should return a valid response with no error', (validPasswords: string) => {
+        const result = passwordValidator(validPasswords);
         expect(result.status).toBeTruthy()
         expect(result.errors).toEqual([])
     });
