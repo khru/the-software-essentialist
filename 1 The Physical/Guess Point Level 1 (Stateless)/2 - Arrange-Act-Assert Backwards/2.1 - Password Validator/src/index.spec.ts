@@ -57,6 +57,7 @@ describe('password validator', () => {
         ['1 non valid'],
         ['2 non valid'],
         ['3 non valid'],
+        ['32 non valid'],
     ])('given the password {%s} when call the password validator then it should return an invalid response with NO_UPPER error', (invalidPassword: string) => {
         const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
@@ -67,6 +68,7 @@ describe('password validator', () => {
         ['A1fe'],
         ['B2fe'],
         ['C3fe'],
+        ['C3fE'],
     ])('given a short password {%s} when call the password validator then it should return an invalid response with TOO_SHORT error', (invalidPassword: string) => {
         const result = passwordValidator(invalidPassword);
         expect(result.status).toBeFalsy()
@@ -87,6 +89,8 @@ describe('password validator', () => {
         ['A perfect p4ass'],
         ['A p3rfect pass'],
         ['A perf3ct pass'],
+        ['A p4ss with 15c'],
+        ['P4ssw'],
     ])('given a valid password {%s} when call the password validator then it should return a valid response with no error', (validPasswords: string) => {
         const result = passwordValidator(validPasswords);
         expect(result.status).toBeTruthy()
