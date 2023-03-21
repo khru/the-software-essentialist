@@ -1,49 +1,37 @@
-type PasswordValidation = { status: boolean, errors: Array<string> };
+type PasswordValidation = { status: boolean, errors: Array<Errors> };
 
+export enum Errors {
+    NO_DIGITS = 'NO_DIGITS',
+    TOO_LONG = 'TOO_LONG',
+    TOO_SHORT = 'TOO_SHORT',
+    NO_UPPER = 'NO_UPPER'
+}
 export class PasswordValidator {
     validate(password: string): PasswordValidation {
-        if (password === 'One') {
-            const passwordValidation: PasswordValidation = {
-                status: true,
-                errors: []
-            }
-            if (this.hasMinLength(password)) {
-                passwordValidation.status = false;
-                passwordValidation.errors.push('TOO_SHORT')
-            }
-
-            if (this.hasAtLeastANumber(password)) {
-                passwordValidation.status = false;
-                passwordValidation.errors.push('NO_DIGITS')
-            }
-            return passwordValidation;
-        }
-
-        if (password === 'Two') {
-            return { status: false, errors: ['TOO_SHORT', 'NO_DIGITS']};
-        }
-
-        if (password === 'Too') {
-            return { status: false, errors: ['TOO_SHORT', 'NO_DIGITS']};
+        const passwordValidation: PasswordValidation = {
+            status: true,
+            errors: []
         }
 
         if (this.hasAtLeastANumber(password)) {
-            return { status: false, errors: ['NO_DIGITS']};
+            passwordValidation.status = false;
+            passwordValidation.errors.push(Errors.NO_DIGITS)
         }
 
         if (this.hasMaxLength(password)) {
-            return { status: false, errors: ['TOO_LONG']};
+            return { status: false, errors: [Errors.TOO_LONG]};
         }
 
         if (this.hasMinLength(password)) {
-            return { status: false, errors: ['TOO_SHORT']};
+            passwordValidation.status = false;
+            passwordValidation.errors.push(Errors.TOO_SHORT);
         }
 
         if (this.hasUppercase(password)) {
-            return { status: false, errors: ['NO_UPPER']};
+            return { status: false, errors: [Errors.NO_UPPER]};
         }
 
-        return { status: true, errors: []};
+        return passwordValidation;
     }
     private hasUppercase(password: string): boolean {
         const uppercasePatternRegex: RegExp = /.*[A-Z].*/g;
